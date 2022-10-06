@@ -6,7 +6,6 @@ const fs = require('fs');
 const debug = require('debug')('slate-tools:deploy');
 const open = Promise.promisify(require('open'));
 const yaml = require('js-yaml');
-const themekit = require('@shopify/themekit');
 
 const config = require('./includes/config.js');
 const messages = require('./includes/messages.js');
@@ -20,20 +19,7 @@ const utils = require('./includes/utilities.js');
  */
 function deploy(env) {
   return new Promise((resolve, reject) => {
-    debug(`themekit cwd to: ${config.dist.root}`);
-
-    themekit.command({
-      args: ['replace', '--env', env],
-      cwd: config.dist.root,
-    }, (err) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve();
-      }
-    });
-  }).catch((err) => {
-    messages.logTransferFailed(err);
+    resolve();
   });
 }
 

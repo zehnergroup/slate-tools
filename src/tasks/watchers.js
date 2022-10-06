@@ -3,8 +3,6 @@ const _ = require('lodash');
 const debug = require('debug')('slate-tools:watchers');
 const chokidar = require('chokidar');
 const fs = require('fs');
-const themekit = require('@shopify/themekit');
-
 const config = require('./includes/config.js');
 const utils = require('./includes/utilities.js');
 const messages = require('./includes/messages.js');
@@ -50,26 +48,7 @@ function deploy(cmd, files, env) {
   activeDeploy = true;
 
   return new Promise((resolve, reject) => {
-    debug(`themekit cwd to: ${config.dist.root}`);
-
-    themekit.command({
-      args: [cmd, '--env', env].concat(files),
-      cwd: config.dist.root,
-    }, (err) => {
-      if (err) {
-        reject(err);
-      } else {
-        resolve();
-      }
-    });
-  }).then(() => {
-    activeDeploy = false;
-    fs.appendFileSync(config.deployLog, messages.logDeploys(cmd, files)); // eslint-disable-line no-sync
-    return checkDeployStatus();
-  }).catch((err) => {
-    activeDeploy = false;
-    messages.logTransferFailed(err);
-    return checkDeployStatus();
+    resolve();
   });
 }
 
