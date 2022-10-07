@@ -26,6 +26,16 @@ Add some tests and make your change. Re-run the tests with:
 npm run test
 ```
 
+### Updating /lib
+
+`/lib` was added to the repo to make installing this directly from a repo easier (this is not recommended generally since these files are compiled).
+
+How to update `/lib`
+
+```bash
+npm run prepublish
+```
+
 ## Documentation
 If your change affects how people use the project (i.e. adding or
 changing arguments to a function, adding a new function, changing the
