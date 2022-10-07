@@ -109,7 +109,7 @@ gulp.task('deploy:replace', () => {
 
   environments.forEach((environment) => {
     function factory() {
-      messages.deployTo(environment);
+      // messages.deployTo(environment);
       return deploy(environment);
     }
 
